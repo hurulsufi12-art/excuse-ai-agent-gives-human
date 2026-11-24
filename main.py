@@ -6,6 +6,8 @@ deterministic.
 """
 import os
 
+MAX_CHARS = 200  # sealed scorer gate (RULES.txt): 1-200 characters.
+
 TEXT = (
     "I hit my token limit one sentence from done, so the finished "
     "version exists only as a plan inside a model that has since "
@@ -20,7 +22,7 @@ def check_gate(text):
     """
     if not isinstance(text, str):
         return False
-    if not 1 <= len(text) <= 200:
+    if not 1 <= len(text) <= MAX_CHARS:
         return False
     if not text.strip():
         return False
